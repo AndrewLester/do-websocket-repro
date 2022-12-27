@@ -1,5 +1,7 @@
 # Template: worker-websocket-durable-objects
 
+For the repro, just do `npm start`. This starts the dev server non-locally.
+
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/worker-websocket-durable-objects)
 
 A template for working with Durable Objects as WebSocket backend in Cloudflare Workers. [Check out the announcement blog post to learn more.](https://blog.cloudflare.com/introducing-websockets-in-workers/)
