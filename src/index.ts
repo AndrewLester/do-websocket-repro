@@ -16,10 +16,20 @@ const worker: ExportedHandler<Environment> = {
 			const durableObjectId = env.DO_WEBSOCKET.idFromName(url.pathname);
 			const durableObjectStub = env.DO_WEBSOCKET.get(durableObjectId);
 
+			const headers = new Headers([...request.headers])
+
+			headers.set('Content-Type', 'application/json')
+			headers.set('itty-durable-idFromName', '50')
+
+			// TRY COMMENTING THIS LINE OUT. You'll notice the DO sees a POST request! If it's uncommented
+			// the DO sees ONLY GET requests!
+			headers.delete('upgrade')
+
 			return durableObjectStub.fetch(request.url, {
 				method: 'POST',
-				headers: request.headers,
-				cf: request.cf
+				headers,
+				cf: request.cf,
+				body: JSON.stringify({yo: 'hi'}),
 			});
 		}
 

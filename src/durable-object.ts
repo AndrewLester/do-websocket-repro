@@ -48,6 +48,8 @@ export class WebSocketDurableObject {
 	}
 
 	async fetch(request: Request) {
+		console.log(request.url, request.method)
+		return new Response(null, { status: 200 })
 		const requestMetadata = request.cf;
 
 		// To accept the WebSocket request, we create a WebSocketPair (which is like a socketpair,
