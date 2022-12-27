@@ -15,7 +15,12 @@ const worker: ExportedHandler<Environment> = {
 		if (request.headers.get('upgrade') === 'websocket') {
 			const durableObjectId = env.DO_WEBSOCKET.idFromName(url.pathname);
 			const durableObjectStub = env.DO_WEBSOCKET.get(durableObjectId);
-			return durableObjectStub.fetch(request);
+
+			return durableObjectStub.fetch(request.url, {
+				method: 'POST',
+				headers: request.headers,
+				cf: request.cf
+			});
 		}
 
 		// return static HTML
