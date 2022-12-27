@@ -21,8 +21,8 @@ const worker: ExportedHandler<Environment> = {
 			headers.set('Content-Type', 'application/json')
 			headers.set('itty-durable-idFromName', '50')
 
-			// TRY COMMENTING THIS LINE OUT. You'll notice the DO sees a POST request! If it's uncommented
-			// the DO sees ONLY GET requests!
+			// TRY COMMENTING THIS LINE OUT. You'll notice the DO sees a GET request! If it's uncommented
+			// the DO does see POST requests (but of course no upgrade header)!
 			headers.delete('upgrade')
 
 			return durableObjectStub.fetch(request.url, {
